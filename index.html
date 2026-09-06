@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Como liderar reuniões difíceis | Fernanda Scavacini</title>
+<meta name="description" content="Reunião difícil é a que toma três horas da sua semana e termina sem decisão. Livro eletrônico gratuito de 36 páginas, por Fernanda Scavacini, autora de O Outro Lado da Gestão.">
+<meta property="og:title" content="Nem toda reunião se conduz do mesmo jeito.">
+<meta property="og:description" content="Reunião difícil é a que toma três horas da sua semana e termina sem decisão. Livro eletrônico gratuito de 36 páginas.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Fustat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1C2333; --slate:#404A63; --taupe:#C4B7AE; --greige:#D3CAC5;
+    --soft:#F2EFEE; --offwhite:#F4F1EC;
+    --body-dark:#C9D0DC; --body-light:#41495B; --foot:#6E7788;
+    --title:'Playfair Display', Georgia, serif;
+    --text:'Fustat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--text);color:var(--body-light);background:#fff;
+       -webkit-font-smoothing:antialiased;line-height:1.65;font-size:17px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
+  .narrow{max-width:860px}
+
+  .seal{font-family:var(--title);font-size:13px;letter-spacing:.42em;
+        text-transform:uppercase;color:var(--taupe)}
+  .rule{height:1px;background:var(--taupe);opacity:.55;border:0}
+
+  /* ---------- heroi ---------- */
+  .hero{background:var(--navy);color:#fff;padding:56px 0 84px;position:relative;overflow:hidden}
+  .hero .deco{position:absolute;right:-150px;top:52px;width:470px;height:470px;
+    border:1px solid rgba(196,183,174,.26);border-radius:50%;pointer-events:none}
+  .hero .deco::after{content:'';position:absolute;inset:48px;
+    border:1px dotted rgba(196,183,174,.3);border-radius:50%}
+  .hero-head{display:flex;align-items:center;gap:22px;margin-bottom:70px}
+  .hero-head .rule{flex:1;opacity:.32}
+  h1{font-family:var(--title);font-weight:400;color:#fff;
+     font-size:clamp(2.2rem,5.4vw,3.6rem);line-height:1.14;letter-spacing:-.012em;
+     max-width:15ch;margin-bottom:30px}
+  h1 em{font-style:italic;color:var(--taupe)}
+  .hero p.lead{color:var(--body-dark);font-size:1.08rem;max-width:54ch}
+  .hero p.lead+p.lead{margin-top:15px}
+  .hero p.lead strong{color:#fff;font-weight:600}
+  .hero .forma{margin-top:40px}
+  .hero .note{color:var(--foot);font-size:.86rem;margin-top:18px}
+
+  /* ---------- formulario ---------- */
+  .form-card{background:rgba(255,255,255,.05);border:1px solid rgba(196,183,174,.22);
+    padding:30px;max-width:520px}
+  .field{margin-bottom:16px}
+  label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+        font-weight:600;color:var(--taupe);margin-bottom:7px}
+  input[type=text],input[type=email]{width:100%;padding:13px 15px;font-family:var(--text);
+    font-size:1rem;color:#fff;background:rgba(255,255,255,.06);
+    border:1px solid rgba(196,183,174,.3);border-radius:2px;transition:border-color .18s}
+  input:focus{outline:none;border-color:var(--taupe)}
+  .consent{display:flex;gap:11px;align-items:flex-start;margin:20px 0 22px;
+           font-size:.83rem;color:var(--body-dark);line-height:1.55;
+           text-transform:none;letter-spacing:normal;font-weight:400}
+  .consent input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--taupe)}
+  .consent a{color:var(--taupe);text-underline-offset:3px}
+  button{width:100%;padding:16px 20px;font-family:var(--text);font-size:.82rem;font-weight:600;
+    letter-spacing:.17em;text-transform:uppercase;color:var(--navy);background:var(--taupe);
+    border:0;border-radius:2px;cursor:pointer;transition:background .18s}
+  button:hover{background:#d6cbc3}
+
+  /* ---------- secoes ---------- */
+  section{padding:88px 0}
+  .bg-soft{background:var(--offwhite)}
+  .kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
+          color:var(--taupe);margin-bottom:18px}
+  h2{font-family:var(--title);font-weight:400;color:var(--navy);
+     font-size:clamp(1.75rem,3.5vw,2.4rem);line-height:1.22;margin-bottom:14px}
+  h2 em{font-style:italic}
+  .sub{max-width:56ch}
+  h3{font-family:var(--text);font-weight:600;font-size:1.02rem;color:var(--navy);
+     margin-bottom:8px;line-height:1.4}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;margin-top:50px}
+  .item{border-top:1px solid var(--greige);padding-top:20px}
+  .item p{font-size:.95rem}
+
+  /* ---------- tese ---------- */
+  .tese{background:var(--navy);color:#fff;padding:78px 0}
+  .tese blockquote{font-family:var(--title);font-style:italic;color:#fff;
+    font-size:clamp(1.42rem,2.9vw,1.95rem);line-height:1.42;max-width:26ch}
+  .tese .fonte{color:var(--taupe);font-size:.8rem;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:600;margin-top:26px}
+  .tese .par{color:var(--body-dark);max-width:50ch}
+  .tese .cols{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
+  @media(max-width:900px){.tese .cols{grid-template-columns:1fr;gap:34px}}
+
+  /* ---------- autora ---------- */
+  .autora .bandeira{font-family:var(--title);font-style:italic;font-size:1.3rem;
+    color:var(--navy);margin-top:26px;padding-top:24px;border-top:1px solid var(--greige)}
+
+  /* ---------- fecho ---------- */
+  .close{background:var(--navy);color:#fff;padding:88px 0}
+  .close h2{color:#fff;max-width:19ch}
+  .close h2 span{color:var(--taupe)}
+  .close .sub{color:var(--body-dark);max-width:44ch;margin-top:16px}
+  .close .cols{display:grid;grid-template-columns:1fr 520px;gap:64px;align-items:center}
+  @media(max-width:900px){.close .cols{grid-template-columns:1fr;gap:36px}}
+
+  footer{background:var(--navy);border-top:1px solid rgba(196,183,174,.16);
+         padding:34px 0;color:var(--foot);font-size:.83rem}
+  footer .row{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center}
+  footer a{color:var(--taupe);text-decoration:none}
+  footer a:hover{text-decoration:underline;text-underline-offset:3px}
+
+  @media(max-width:640px){
+    body{font-size:16px}
+    .wrap{padding:0 22px}
+    section,.close,.tese{padding:62px 0}
+    .hero{padding:40px 0 62px}
+    .hero-head{margin-bottom:50px}
+    .hero .deco{display:none}
+    .form-card{padding:24px}
+    .grid{gap:30px;margin-top:38px}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="deco" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-head">
+      <span class="seal">Scavacini</span>
+      <hr class="rule">
+    </div>
+
+    <h1>Nem toda reunião <em>se conduz do mesmo jeito.</em></h1>
+
+    <p class="lead">A gente entra e sai de reunião sem tempo de pensar. E quanto mais reunião a
+    gente faz para resolver as coisas, menos elas parecem avançar no ritmo e do jeito que a gente
+    precisa.</p>
+
+    <p class="lead">O problema não são as reuniões. É que elas caíram no automático.</p>
+
+    <p class="lead"><strong>Como liderar reuniões difíceis</strong> são 36 páginas sobre como
+    preparar e conduzir cada tipo de reunião difícil: as de decisão, as de mudança, as de cobrança
+    de comprometimento, e as que ficam difíceis por causa de quem está na sala.</p>
+
+    <form class="form-card forma" id="form-topo" method="post" action="#" novalidate>
+      <div class="field">
+        <label for="nome1">Nome</label>
+        <input type="text" id="nome1" name="NOME" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="email1">E-mail profissional</label>
+        <input type="email" id="email1" name="EMAIL" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="cargo1">Cargo <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
+        <input type="text" id="cargo1" name="CARGO" autocomplete="organization-title">
+      </div>
+      <label class="consent" for="ok1">
+        <input type="checkbox" id="ok1" name="OPTIN" required>
+        <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso sair
+        quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
+      </label>
+      <button type="submit">Quero o e-book</button>
+    </form>
+
+    <p class="note">Livro eletrônico de 36 páginas, com ISBN. Gratuito, e chega no seu e-mail em um minuto.</p>
+  </div>
+</div>
+
+<section class="bg-soft">
+  <div class="wrap">
+    <p class="kicker">O que muda depois</p>
+    <h2>Você para de descobrir na hora.</h2>
+    <p class="sub">Saber trabalhar com previsibilidade é melhor do que aprender a lidar com as
+    consequências do que você não previu. Vale para projeto, para crise e para reunião.</p>
+
+    <div class="grid">
+      <div class="item">
+        <h3>Você reconhece os comportamentos antes de entrar na sala</h3>
+        <p>Cinco perfis que aparecem em qualquer reunião: o repressor, o esquivador, o prolixo, o
+        despreparado e o desesperado. O que cada um faz, o que fazer com cada um, e como mudar se
+        você for essa pessoa.</p>
+      </div>
+      <div class="item">
+        <h3>A reunião de decisão decide</h3>
+        <p>Quem precisa estar na sala, quem não precisa, e o roteiro de abertura do mediador,
+        escrito para você ler.</p>
+      </div>
+      <div class="item">
+        <h3>A conversa sobre comprometimento não vira tribunal</h3>
+        <p>Como confrontar entrega e engajamento, com o exemplo do que dizer e do que não dizer. A
+        diferença entre as duas frases decide o resto da conversa.</p>
+      </div>
+      <div class="item">
+        <h3>A mudança não esbarra na resistência de sempre</h3>
+        <p>O que apresentar, em que ordem, e por que o engajamento se decide no modo como você
+        conduz as objeções, não no conteúdo do slide.</p>
+      </div>
+      <div class="item">
+        <h3>Você negocia com o limite definido antes</h3>
+        <p>A técnica Zopa, a zona de possível acordo, aplicada a aumento salarial, corte de equipe,
+        orçamento de projeto e aprovação de custo com cliente.</p>
+      </div>
+      <div class="item">
+        <h3>O preparo cabe no seu tempo</h3>
+        <p>São 36 páginas com ISBN e ficha catalográfica, e não um resumo. Mas você não precisa ler
+        tudo hoje. Vá ao comportamento que mais aparece nas suas reuniões e comece por ele.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tese">
+  <div class="wrap cols">
+    <div>
+      <blockquote>As reuniões são injustamente crucificadas. São vítimas de um sistema que usa a
+      ferramenta certa para as finalidades erradas.</blockquote>
+      <p class="fonte">Primeira página do livro</p>
+    </div>
+    <div>
+      <p class="par">Esses comportamentos já existem e não são causados pela reunião. Eles chegam
+      prontos, formados pela gestão que você deixa de fazer antes e depois de cada reunião.</p>
+      <p class="par" style="margin-top:15px">Por isso zelar pelo tempo de cada pessoa convidada é
+      responsabilidade de quem lidera o encontro. Inclusive quando quem convocou foi você.</p>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap narrow autora">
+    <p class="kicker">Quem escreve</p>
+    <h2>Fernanda Scavacini</h2>
+    <p style="margin-top:14px;max-width:60ch">Fui gestora por 17 anos, em diferentes contextos de
+    caos, com equipes diversas e até mais profissionais do que um único gestor poderia dar conta.
+    Escrevo sobre gestão há mais de uma década, e aplico o que escrevo. Autora de
+    <em>Abraça o Caos</em> e de <em>O Outro Lado da Gestão</em>. LinkedIn Top Voice.</p>
+    <p class="bandeira">A gestão é o seu legado, não o da empresa.</p>
+  </div>
+</section>
+
+<div class="close">
+  <div class="wrap">
+   <div class="cols">
+    <div>
+      <h2><span>“</span>Não tenho tempo de ler 36 páginas.<span>”</span></h2>
+      <p class="sub">Entendo. Só que você também não tem tempo de repetir, semana que vem, a
+      reunião que não decidiu nada nesta.</p>
+    </div>
+
+    <form class="form-card" id="form-fim" method="post" action="#" novalidate>
+      <div class="field">
+        <label for="nome2">Nome</label>
+        <input type="text" id="nome2" name="NOME" autocomplete="given-name" required>
+      </div>
+      <div class="field">
+        <label for="email2">E-mail profissional</label>
+        <input type="email" id="email2" name="EMAIL" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="cargo2">Cargo <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
+        <input type="text" id="cargo2" name="CARGO" autocomplete="organization-title">
+      </div>
+      <label class="consent" for="ok2">
+        <input type="checkbox" id="ok2" name="OPTIN" required>
+        <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso sair
+        quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
+      </label>
+      <button type="submit">Quero o e-book</button>
+    </form>
+   </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap row">
+    <span class="seal">Scavacini</span>
+    <div>
+      <a href="https://fernandascavacini.com.br">fernandascavacini.com.br</a> &nbsp;·&nbsp;
+      <a href="https://www.linkedin.com/in/fernandascavacini/">LinkedIn</a> &nbsp;·&nbsp;
+      <a href="/politica-de-privacidade">Política de privacidade</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

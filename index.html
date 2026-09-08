@@ -31,7 +31,7 @@
         text-transform:uppercase;color:var(--taupe)}
   .rule{height:1px;background:var(--taupe);opacity:.55;border:0}
 
-  /* ---------- heroi ---------- */
+  /* ---------- herói ---------- */
   .hero{background:var(--navy);color:#fff;padding:56px 0 84px;position:relative;overflow:hidden}
   .hero .deco{position:absolute;right:-150px;top:52px;width:470px;height:470px;
     border:1px solid rgba(196,183,174,.26);border-radius:50%;pointer-events:none}
@@ -49,7 +49,7 @@
   .hero .forma{margin-top:40px}
   .hero .note{color:var(--foot);font-size:.86rem;margin-top:18px}
 
-  /* ---------- formulario ---------- */
+  /* ---------- formulário ---------- */
   .form-card{background:rgba(255,255,255,.05);border:1px solid rgba(196,183,174,.22);
     padding:30px;max-width:520px}
   .field{margin-bottom:16px}
@@ -68,8 +68,14 @@
     letter-spacing:.17em;text-transform:uppercase;color:var(--navy);background:var(--taupe);
     border:0;border-radius:2px;cursor:pointer;transition:background .18s}
   button:hover{background:#d6cbc3}
+  button[disabled]{opacity:.6;cursor:default}
+  input.invalido{border-color:#E2A198}
+  .erro{color:#E2A198;font-size:.85rem;margin:0 0 14px}
+  .ok .ok-titulo{font-family:var(--title);font-size:1.5rem;color:#fff;margin-bottom:12px}
+  .ok p{color:var(--body-dark);font-size:.95rem;margin-bottom:10px}
+  .ok .ok-nota{color:var(--foot);font-size:.85rem;margin-bottom:0}
 
-  /* ---------- secoes ---------- */
+  /* ---------- seções ---------- */
   section{padding:88px 0}
   .bg-soft{background:var(--offwhite)}
   .kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
@@ -126,6 +132,7 @@
 </head>
 <body>
 
+<!-- ============================== HERÓI ============================== -->
 <div class="hero">
   <div class="deco" aria-hidden="true"></div>
   <div class="wrap">
@@ -146,31 +153,41 @@
     preparar e conduzir cada tipo de reunião difícil: as de decisão, as de mudança, as de cobrança
     de comprometimento, e as que ficam difíceis por causa de quem está na sala.</p>
 
-    <form class="form-card forma" id="form-topo" method="post" action="#" novalidate>
+    <div class="form-card forma" id="card-topo">
+    <form class="ml-form" id="form-topo" novalidate>
       <div class="field">
         <label for="nome1">Nome</label>
-        <input type="text" id="nome1" name="NOME" autocomplete="given-name" required>
+        <input type="text" id="nome1" name="fields[name]" autocomplete="given-name" required>
       </div>
       <div class="field">
         <label for="email1">E-mail profissional</label>
-        <input type="email" id="email1" name="EMAIL" autocomplete="email" required>
+        <input type="email" id="email1" name="fields[email]" autocomplete="email" required>
       </div>
       <div class="field">
         <label for="cargo1">Cargo <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
-        <input type="text" id="cargo1" name="CARGO" autocomplete="organization-title">
+        <input type="text" id="cargo1" name="fields[cargo]" autocomplete="organization-title">
       </div>
       <label class="consent" for="ok1">
-        <input type="checkbox" id="ok1" name="OPTIN" required>
+        <input type="checkbox" id="ok1" name="optin" required>
         <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso sair
         quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
       </label>
+      <p class="erro" hidden></p>
       <button type="submit">Quero o e-book</button>
     </form>
+    <div class="ok" hidden>
+      <p class="ok-titulo">Falta um clique.</p>
+      <p>Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
+      <p class="ok-nota">Se não encontrar, olhe no spam e nas promoções.</p>
+    </div>
+    </div>
 
-    <p class="note">Livro eletrônico de 36 páginas, com ISBN. Gratuito, e chega no seu e-mail em um minuto.</p>
+    <p class="note">Livro eletrônico de 36 páginas, com ISBN. Gratuito. Você confirma o cadastro em
+    um clique e ele chega em seguida.</p>
   </div>
 </div>
 
+<!-- ============================== O QUE MUDA ============================== -->
 <section class="bg-soft">
   <div class="wrap">
     <p class="kicker">O que muda depois</p>
@@ -214,6 +231,7 @@
   </div>
 </section>
 
+<!-- ============================== A TESE ============================== -->
 <div class="tese">
   <div class="wrap cols">
     <div>
@@ -230,6 +248,7 @@
   </div>
 </div>
 
+<!-- ============================== QUEM ESCREVE ============================== -->
 <section>
   <div class="wrap narrow autora">
     <p class="kicker">Quem escreve</p>
@@ -242,6 +261,7 @@
   </div>
 </section>
 
+<!-- ============================== FECHO ============================== -->
 <div class="close">
   <div class="wrap">
    <div class="cols">
@@ -251,26 +271,34 @@
       reunião que não decidiu nada nesta.</p>
     </div>
 
-    <form class="form-card" id="form-fim" method="post" action="#" novalidate>
+    <div class="form-card" id="card-fim">
+    <form class="ml-form" id="form-fim" novalidate>
       <div class="field">
         <label for="nome2">Nome</label>
-        <input type="text" id="nome2" name="NOME" autocomplete="given-name" required>
+        <input type="text" id="nome2" name="fields[name]" autocomplete="given-name" required>
       </div>
       <div class="field">
         <label for="email2">E-mail profissional</label>
-        <input type="email" id="email2" name="EMAIL" autocomplete="email" required>
+        <input type="email" id="email2" name="fields[email]" autocomplete="email" required>
       </div>
       <div class="field">
         <label for="cargo2">Cargo <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
-        <input type="text" id="cargo2" name="CARGO" autocomplete="organization-title">
+        <input type="text" id="cargo2" name="fields[cargo]" autocomplete="organization-title">
       </div>
       <label class="consent" for="ok2">
-        <input type="checkbox" id="ok2" name="OPTIN" required>
+        <input type="checkbox" id="ok2" name="optin" required>
         <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso sair
         quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
       </label>
+      <p class="erro" hidden></p>
       <button type="submit">Quero o e-book</button>
     </form>
+    <div class="ok" hidden>
+      <p class="ok-titulo">Falta um clique.</p>
+      <p>Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
+      <p class="ok-nota">Se não encontrar, olhe no spam e nas promoções.</p>
+    </div>
+    </div>
    </div>
   </div>
 </div>
@@ -285,6 +313,72 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var URL_ML = 'https://assets.mailerlite.com/jsonp/1409808/forms/198052645879940393/subscribe';
+
+  function valido(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email); }
+
+  function ligar(form){
+    var card  = form.parentNode;
+    var okBox = card.querySelector('.ok');
+    var erro  = form.querySelector('.erro');
+    var botao = form.querySelector('button');
+    var nome  = form.querySelector('input[name="fields[name]"]');
+    var email = form.querySelector('input[name="fields[email]"]');
+    var cargo = form.querySelector('input[name="fields[cargo]"]');
+    var optin = form.querySelector('input[name="optin"]');
+    var rotulo = botao.textContent;
+
+    function falha(msg, campo){
+      erro.textContent = msg; erro.hidden = false;
+      [nome,email].forEach(function(c){ c.classList.remove('invalido'); });
+      if (campo){ campo.classList.add('invalido'); campo.focus(); }
+    }
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      erro.hidden = true;
+
+      if (!nome.value.trim())      return falha('Escreva o seu nome.', nome);
+      if (!valido(email.value.trim())) return falha('Confira o e-mail, parece que falta alguma coisa.', email);
+      if (!optin.checked)          return falha('Marque a autorização para eu poder te enviar o material.', null);
+
+      botao.disabled = true;
+      botao.textContent = 'Aguarde um instante';
+
+      var dados = new URLSearchParams();
+      dados.append('fields[name]',  nome.value.trim());
+      dados.append('fields[email]', email.value.trim());
+      dados.append('fields[cargo]', cargo.value.trim());
+      dados.append('ml-submit', '1');
+      dados.append('anticsrf', 'true');
+
+      function pronto(){
+        form.hidden = true;
+        okBox.hidden = false;
+        okBox.setAttribute('tabindex','-1');
+        okBox.focus();
+      }
+
+      fetch(URL_ML, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'},
+        body: dados.toString()
+      }).then(pronto).catch(function(){
+        botao.disabled = false;
+        botao.textContent = rotulo;
+        falha('Não consegui enviar agora. Tente de novo em um instante.', null);
+      });
+    });
+  }
+
+  var formularios = document.querySelectorAll('form.ml-form');
+  for (var i = 0; i < formularios.length; i++) ligar(formularios[i]);
+})();
+</script>
 
 </body>
 </html>

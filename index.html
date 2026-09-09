@@ -14,215 +14,278 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..600&family=Fustat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#1C2333; --slate:#404A63; --taupe:#C4B7AE; --greige:#D3CAC5;
-    --soft:#F2EFEE; --offwhite:#F4F1EC;
-    --body-dark:#C9D0DC; --body-light:#41495B; --foot:#6E7788;
+    --navy:#1C2333; --navy-deep:#161C29; --taupe:#C4B7AE; --greige:#D3CAC5;
+    --offwhite:#F4F1EC;
+    --body-dark:#C9D0DC; --body-light:#41495B; --foot:#98A0AF;
     --title:'Playfair Display', Georgia, serif;
     --text:'Fustat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{font-family:var(--text);color:var(--body-light);background:#fff;
-       -webkit-font-smoothing:antialiased;line-height:1.65;font-size:17px}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 32px}
-  .narrow{max-width:860px}
-
+  body{font-family:var(--text);background:var(--navy);color:#fff;
+       -webkit-font-smoothing:antialiased;line-height:1.65;font-size:17px;text-wrap:pretty}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
   .seal{font-family:var(--title);font-size:13px;letter-spacing:.42em;
         text-transform:uppercase;color:var(--taupe)}
-  .rule{height:1px;background:var(--taupe);opacity:.55;border:0}
+  .kicker{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+  a{color:var(--taupe);text-decoration:none}
+  a:hover{color:#E4DCD6;text-decoration:underline;text-underline-offset:3px}
+  input:focus{outline:2px solid var(--taupe);outline-offset:3px;border-radius:1px}
+
+  /* ---------- cabeçalho ---------- */
+  header{border-bottom:1px solid rgba(196,183,174,.18)}
+  header .wrap{padding-top:22px;padding-bottom:22px}
 
   /* ---------- herói ---------- */
-  .hero{background:var(--navy);color:#fff;padding:56px 0 84px;position:relative;overflow:hidden}
-  .hero .deco{position:absolute;right:-150px;top:52px;width:470px;height:470px;
-    border:1px solid rgba(196,183,174,.26);border-radius:50%;pointer-events:none}
-  .hero .deco::after{content:'';position:absolute;inset:48px;
-    border:1px dotted rgba(196,183,174,.3);border-radius:50%}
-  .hero-head{display:flex;align-items:center;gap:22px;margin-bottom:70px}
-  .hero-head .rule{flex:1;opacity:.32}
-  h1{font-family:var(--title);font-weight:400;color:#fff;
-     font-size:clamp(2.2rem,5.4vw,3.6rem);line-height:1.14;letter-spacing:-.012em;
-     max-width:15ch;margin-bottom:30px}
+  .hero .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+    gap:56px;align-items:start;padding-top:88px;padding-bottom:104px}
+  .traco{width:64px;height:1px;background:var(--taupe);display:block;margin-bottom:34px}
+  h1{font-family:var(--title);font-weight:400;
+     font-size:clamp(2.2rem,4.8vw,3.6rem);line-height:1.1;letter-spacing:-.015em;
+     margin-bottom:30px;max-width:16ch}
   h1 em{font-style:italic;color:var(--taupe)}
-  .hero p.lead{color:var(--body-dark);font-size:1.08rem;max-width:54ch}
-  .hero p.lead+p.lead{margin-top:15px}
-  .hero p.lead strong{color:#fff;font-weight:600}
-  .hero .forma{margin-top:40px}
-  .hero .note{color:var(--foot);font-size:.86rem;margin-top:18px}
+  .hero .lead{display:flex;flex-direction:column;gap:18px;max-width:52ch;color:var(--body-dark)}
+  .hero .lead strong{font-weight:600;color:#fff}
+  .destaque{font-family:var(--title);font-size:1.32rem;line-height:1.4;color:#fff;
+    padding-left:20px;border-left:2px solid var(--taupe)}
 
-  /* ---------- formulário ---------- */
-  .form-card{background:rgba(255,255,255,.05);border:1px solid rgba(196,183,174,.22);
-    padding:30px;max-width:520px}
-  .field{margin-bottom:16px}
-  label{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
-        font-weight:600;color:var(--taupe);margin-bottom:7px}
-  input[type=text],input[type=email]{width:100%;padding:13px 15px;font-family:var(--text);
-    font-size:1rem;color:#fff;background:rgba(255,255,255,.06);
-    border:1px solid rgba(196,183,174,.3);border-radius:2px;transition:border-color .18s}
-  input:focus{outline:none;border-color:var(--taupe)}
-  .consent{display:flex;gap:11px;align-items:flex-start;margin:20px 0 22px;
-           font-size:.83rem;color:var(--body-dark);line-height:1.55;
-           text-transform:none;letter-spacing:normal;font-weight:400}
-  .consent input{margin-top:3px;flex-shrink:0;width:16px;height:16px;accent-color:var(--taupe)}
-  .consent a{color:var(--taupe);text-underline-offset:3px}
-  button{width:100%;padding:16px 20px;font-family:var(--text);font-size:.82rem;font-weight:600;
-    letter-spacing:.17em;text-transform:uppercase;color:var(--navy);background:var(--taupe);
-    border:0;border-radius:2px;cursor:pointer;transition:background .18s}
-  button:hover{background:#d6cbc3}
+  /* ---------- cartões de formulário ---------- */
+  .card{min-width:0;border-radius:14px 0 14px 0}
+  .card.claro{background:var(--offwhite);color:var(--body-light);
+    box-shadow:0 30px 70px -30px rgba(0,0,0,.55)}
+  .card.escuro{background:var(--navy);box-shadow:0 30px 70px -34px rgba(28,35,51,.7)}
+  form{padding:30px;display:flex;flex-direction:column;gap:20px}
+  label.campo{display:flex;flex-direction:column;gap:7px}
+  label.campo span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  .claro label.campo span{color:#525B6E}
+  .escuro label.campo span{color:var(--taupe)}
+  input[type=text],input[type=email]{border:0;background:transparent;padding:8px 2px;
+    font-family:var(--text);font-size:1rem;transition:border-color .18s}
+  .claro input[type=text],.claro input[type=email]{border-bottom:1px solid rgba(28,35,51,.28);color:var(--navy)}
+  .escuro input[type=text],.escuro input[type=email]{border-bottom:1px solid rgba(196,183,174,.45);color:#fff}
+  .claro input[type=text]:hover,.claro input[type=email]:hover{border-bottom-color:rgba(28,35,51,.6)}
+  .escuro input[type=text]:hover,.escuro input[type=email]:hover{border-bottom-color:var(--taupe)}
+  .claro input.invalido{border-bottom-color:#A8483C !important}
+  .escuro input.invalido{border-bottom-color:#D98B7E !important}
+  .consent{display:flex;gap:11px;align-items:flex-start;font-size:.82rem;line-height:1.5;cursor:pointer}
+  .claro .consent{color:#5A6376}
+  .escuro .consent{color:var(--body-dark)}
+  .consent input{margin-top:4px;width:15px;height:15px;flex:none}
+  .claro .consent input{accent-color:var(--navy)}
+  .escuro .consent input{accent-color:var(--taupe)}
+  .claro .consent a{color:var(--body-light);text-decoration:underline;text-underline-offset:2px}
+  .escuro .consent a{color:var(--taupe);text-decoration:underline;text-underline-offset:2px}
+  button{margin-top:4px;display:inline-flex;align-items:center;justify-content:space-between;
+    gap:14px;padding:17px 24px;border:0;border-radius:8px 0 8px 0;font-family:var(--text);
+    font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    cursor:pointer;transition:background .18s}
+  .claro button{background:var(--navy);color:#fff}
+  .claro button:hover{background:#2D3752}
+  .claro button .risco{background:var(--taupe)}
+  .escuro button{background:var(--taupe);color:var(--navy)}
+  .escuro button:hover{background:#D9CFC8}
+  .escuro button .risco{background:var(--navy)}
   button[disabled]{opacity:.6;cursor:default}
-  input.invalido{border-color:#E2A198}
-  .erro{color:#E2A198;font-size:.85rem;margin:0 0 14px}
-  .ok .ok-titulo{font-family:var(--title);font-size:1.5rem;color:#fff;margin-bottom:12px}
-  .ok p{color:var(--body-dark);font-size:.95rem;margin-bottom:10px}
-  .ok .ok-nota{color:var(--foot);font-size:.85rem;margin-bottom:0}
+  .risco{width:24px;height:1px;display:inline-block;flex:none}
+  .nota{font-size:.78rem;line-height:1.5}
+  .claro .nota{color:#525B6E}
+  .escuro .nota{color:var(--foot)}
+  .erro{font-size:.82rem;margin:-6px 0 0}
+  .claro .erro{color:#A8483C}
+  .escuro .erro{color:#D98B7E}
+  .ok{padding:38px 30px}
+  .ok .selo{margin-bottom:12px}
+  .claro .ok .selo{color:#6E7788}
+  .escuro .ok .selo{color:var(--taupe)}
+  .ok .titulo{font-family:var(--title);font-size:1.5rem;line-height:1.3;margin-bottom:12px}
+  .claro .ok .titulo{color:var(--navy)}
+  .escuro .ok .titulo{color:#fff}
+  .ok p.corpo{font-size:.95rem}
+  .claro .ok p.corpo{color:#5A6376}
+  .escuro .ok p.corpo{color:var(--body-dark)}
+  .ok p.corpo+p.corpo{margin-top:10px;font-size:.85rem;opacity:.8}
 
-  /* ---------- seções ---------- */
-  section{padding:88px 0}
-  .bg-soft{background:var(--offwhite)}
-  .kicker{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;
-          color:var(--taupe);margin-bottom:18px}
-  h2{font-family:var(--title);font-weight:400;color:var(--navy);
-     font-size:clamp(1.75rem,3.5vw,2.4rem);line-height:1.22;margin-bottom:14px}
-  h2 em{font-style:italic}
-  .sub{max-width:56ch}
-  h3{font-family:var(--text);font-weight:600;font-size:1.02rem;color:var(--navy);
-     margin-bottom:8px;line-height:1.4}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:36px;margin-top:50px}
-  .item{border-top:1px solid var(--greige);padding-top:20px}
-  .item p{font-size:.95rem}
+  /* ---------- benefícios ---------- */
+  .beneficios{background:var(--offwhite);color:var(--body-light)}
+  .beneficios .wrap{padding-top:104px;padding-bottom:104px}
+  .beneficios .topo{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:48px;align-items:end;padding-bottom:56px}
+  .beneficios .kicker{color:#6B6058;margin-bottom:20px}
+  h2{font-family:var(--title);font-weight:400;line-height:1.1;letter-spacing:-.015em;color:var(--navy)}
+  .beneficios h2{font-size:clamp(2rem,4vw,3.1rem);max-width:18ch}
+  .beneficios .topo p{max-width:48ch;font-size:1.05rem}
+  .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 56px}
+  .item{padding:38px 0 6px;border-top:1px solid rgba(28,35,51,.16)}
+  .item .num{font-family:var(--title);font-size:1rem;color:#6B6058;display:block;margin-bottom:14px}
+  .item h3{font-family:var(--title);font-weight:400;font-size:1.44rem;line-height:1.24;
+    color:var(--navy);margin-bottom:12px}
+  .item p{font-size:.98rem}
+  .item em{font-style:italic;color:var(--navy)}
 
-  /* ---------- tese ---------- */
-  .tese{background:var(--navy);color:#fff;padding:78px 0}
-  .tese blockquote{font-family:var(--title);font-style:italic;color:#fff;
-    font-size:clamp(1.42rem,2.9vw,1.95rem);line-height:1.42;max-width:26ch}
-  .tese .fonte{color:var(--taupe);font-size:.8rem;letter-spacing:.16em;
-    text-transform:uppercase;font-weight:600;margin-top:26px}
-  .tese .par{color:var(--body-dark);max-width:50ch}
-  .tese .cols{display:grid;grid-template-columns:1.05fr 1fr;gap:70px;align-items:center}
-  @media(max-width:900px){.tese .cols{grid-template-columns:1fr;gap:34px}}
+  /* ---------- citação ---------- */
+  .citacao{background:var(--navy-deep)}
+  .citacao .wrap{padding-top:104px;padding-bottom:104px;display:flex;flex-direction:column;
+    align-items:center;gap:26px;text-align:center}
+  .citacao .risco-v{width:1px;height:44px;background:var(--taupe);opacity:.5;display:block}
+  blockquote{font-family:var(--title);font-style:italic;font-weight:400;
+    font-size:clamp(1.5rem,3.4vw,2.5rem);line-height:1.28;color:#fff;max-width:30ch}
+
+  /* ---------- página do livro ---------- */
+  .pagina{background:var(--greige);color:#3A4256}
+  .pagina .wrap{padding-top:104px;padding-bottom:104px;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:64px;align-items:center}
+  .pagina .kicker{color:#5C544C;margin-bottom:18px}
+  .pagina img{display:block;width:100%;max-width:400px;height:auto;
+    border-radius:12px 0 12px 0;box-shadow:0 26px 60px -28px rgba(28,35,51,.65)}
+  .pagina .texto{min-width:0;display:flex;flex-direction:column;gap:20px;max-width:50ch}
+  .pagina .texto .grande{font-family:var(--title);font-size:clamp(1.4rem,2.4vw,1.9rem);
+    line-height:1.3;color:var(--navy)}
+  .pagina .texto p{font-size:1.02rem}
 
   /* ---------- autora ---------- */
-  .autora .bandeira{font-family:var(--title);font-style:italic;font-size:1.3rem;
-    color:var(--navy);margin-top:26px;padding-top:24px;border-top:1px solid var(--greige)}
+  .autora{border-bottom:1px solid rgba(196,183,174,.16)}
+  .autora .wrap{padding-top:104px;padding-bottom:104px;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:center}
+  .autora .kicker{color:var(--foot);margin-bottom:16px}
+  .autora h2{font-size:clamp(1.6rem,3.2vw,2.35rem);line-height:1.15;letter-spacing:.08em;
+    text-transform:uppercase;color:#fff;margin-bottom:26px}
+  .autora p.bio{color:var(--body-dark);max-width:52ch}
+  .autora p.bio em{font-style:italic;color:#fff}
+  .autora .bandeira{font-family:var(--title);font-style:italic;
+    font-size:clamp(1.5rem,2.6vw,2.05rem);line-height:1.3;color:var(--taupe);
+    padding-left:26px;border-left:1px solid rgba(196,183,174,.35);max-width:22ch}
+  @media(max-width:700px){
+    .autora .bandeira{padding-left:20px}
+  }
 
   /* ---------- fecho ---------- */
-  .close{background:var(--navy);color:#fff;padding:88px 0}
-  .close h2{color:#fff;max-width:19ch}
-  .close h2 span{color:var(--taupe)}
-  .close .sub{color:var(--body-dark);max-width:44ch;margin-top:16px}
-  .close .cols{display:grid;grid-template-columns:1fr 520px;gap:64px;align-items:center}
-  @media(max-width:900px){.close .cols{grid-template-columns:1fr;gap:36px}}
+  .fecho{background:var(--offwhite);color:var(--body-light)}
+  .fecho .wrap{padding-top:104px;padding-bottom:104px;display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:64px;align-items:center}
+  .fecho h2{font-size:clamp(1.9rem,3.8vw,2.9rem);line-height:1.12;margin-bottom:22px;max-width:22ch}
+  .fecho .sub{font-size:1.05rem;max-width:34ch}
 
-  footer{background:var(--navy);border-top:1px solid rgba(196,183,174,.16);
-         padding:34px 0;color:var(--foot);font-size:.83rem}
-  footer .row{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center}
-  footer a{color:var(--taupe);text-decoration:none}
-  footer a:hover{text-decoration:underline;text-underline-offset:3px}
+  footer .wrap{padding-top:34px;padding-bottom:34px;display:flex;flex-wrap:wrap;
+    align-items:center;justify-content:space-between;gap:20px}
+  footer p{font-size:.83rem;color:var(--foot);display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 
-  @media(max-width:640px){
+  @media(max-width:700px){
     body{font-size:16px}
     .wrap{padding:0 22px}
-    section,.close,.tese{padding:62px 0}
-    .hero{padding:40px 0 62px}
-    .hero-head{margin-bottom:50px}
-    .hero .deco{display:none}
-    .form-card{padding:24px}
-    .grid{gap:30px;margin-top:38px}
+    .hero .wrap{padding-top:52px;padding-bottom:64px;gap:40px}
+    .beneficios .wrap,.citacao .wrap,.pagina .wrap,.autora .wrap,.fecho .wrap{
+      padding-top:64px;padding-bottom:64px;gap:40px}
+    .grade{gap:0 32px}
+    .item{padding:30px 0}
+    form{padding:26px}
   }
 </style>
 </head>
 <body>
 
+<header>
+  <div class="wrap"><span class="seal">Scavacini</span></div>
+</header>
+
 <!-- ============================== HERÓI ============================== -->
-<div class="hero">
-  <div class="deco" aria-hidden="true"></div>
+<section class="hero">
   <div class="wrap">
-    <div class="hero-head">
-      <span class="seal">Scavacini</span>
-      <hr class="rule">
+
+    <div style="min-width:0">
+      <span class="traco" aria-hidden="true"></span>
+      <h1>Nem toda reunião <em>se conduz do mesmo jeito.</em></h1>
+      <div class="lead">
+        <p>A gente entra e sai de reunião sem tempo de pensar. E quanto mais reunião a gente faz
+        para resolver as coisas, menos elas parecem avançar no ritmo e do jeito que a gente
+        precisa.</p>
+        <p class="destaque">O problema não são as reuniões. É que elas caíram no automático.</p>
+        <p><strong>Como liderar reuniões difíceis</strong> são 36 páginas sobre como preparar e
+        conduzir cada tipo de reunião difícil: as de decisão, as de mudança, as de cobrança de
+        comprometimento, e as que ficam difíceis por causa de quem está na sala.</p>
+      </div>
     </div>
 
-    <h1>Nem toda reunião <em>se conduz do mesmo jeito.</em></h1>
-
-    <p class="lead">A gente entra e sai de reunião sem tempo de pensar. E quanto mais reunião a
-    gente faz para resolver as coisas, menos elas parecem avançar no ritmo e do jeito que a gente
-    precisa.</p>
-
-    <p class="lead">O problema não são as reuniões. É que elas caíram no automático.</p>
-
-    <p class="lead"><strong>Como liderar reuniões difíceis</strong> são 36 páginas sobre como
-    preparar e conduzir cada tipo de reunião difícil: as de decisão, as de mudança, as de cobrança
-    de comprometimento, e as que ficam difíceis por causa de quem está na sala.</p>
-
-    <div class="form-card forma" id="card-topo">
-    <form class="ml-form" id="form-topo" novalidate>
-      <div class="field">
-        <label for="nome1">Nome</label>
-        <input type="text" id="nome1" name="fields[name]" autocomplete="given-name" required>
+    <div class="card claro" id="card-topo">
+      <form class="ml-form" id="form-topo" novalidate>
+        <label class="campo" for="nome1">
+          <span>Nome</span>
+          <input type="text" id="nome1" name="fields[name]" autocomplete="given-name" required>
+        </label>
+        <label class="campo" for="email1">
+          <span>E-mail profissional</span>
+          <input type="email" id="email1" name="fields[email]" autocomplete="email" required>
+        </label>
+        <label class="campo" for="cargo1">
+          <span>Cargo (opcional)</span>
+          <input type="text" id="cargo1" name="fields[cargo]" autocomplete="organization-title">
+        </label>
+        <label class="consent" for="ok1">
+          <input type="checkbox" id="ok1" name="optin" required>
+          <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso
+          sair quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
+        </label>
+        <p class="erro" hidden></p>
+        <button type="submit">Quero o e-book <span class="risco" aria-hidden="true"></span></button>
+        <p class="nota">Livro eletrônico de 36 páginas, com ISBN. Gratuito. Você confirma o cadastro
+        em um clique e ele chega em seguida.</p>
+      </form>
+      <div class="ok" hidden>
+        <p class="kicker selo">Pronto</p>
+        <p class="titulo">Falta um clique.</p>
+        <p class="corpo">Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
+        <p class="corpo">Se não encontrar, olhe no spam e nas promoções.</p>
       </div>
-      <div class="field">
-        <label for="email1">E-mail profissional</label>
-        <input type="email" id="email1" name="fields[email]" autocomplete="email" required>
-      </div>
-      <div class="field">
-        <label for="cargo1">Cargo <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
-        <input type="text" id="cargo1" name="fields[cargo]" autocomplete="organization-title">
-      </div>
-      <label class="consent" for="ok1">
-        <input type="checkbox" id="ok1" name="optin" required>
-        <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso sair
-        quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
-      </label>
-      <p class="erro" hidden></p>
-      <button type="submit">Quero o e-book</button>
-    </form>
-    <div class="ok" hidden>
-      <p class="ok-titulo">Falta um clique.</p>
-      <p>Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
-      <p class="ok-nota">Se não encontrar, olhe no spam e nas promoções.</p>
-    </div>
     </div>
 
-    <p class="note">Livro eletrônico de 36 páginas, com ISBN. Gratuito. Você confirma o cadastro em
-    um clique e ele chega em seguida.</p>
   </div>
-</div>
+</section>
 
 <!-- ============================== O QUE MUDA ============================== -->
-<section class="bg-soft">
+<section class="beneficios">
   <div class="wrap">
-    <p class="kicker">O que muda depois</p>
-    <h2>Você para de descobrir na hora.</h2>
-    <p class="sub">Saber trabalhar com previsibilidade é melhor do que aprender a lidar com as
-    consequências do que você não previu. Vale para projeto, para crise e para reunião.</p>
+    <div class="topo">
+      <div>
+        <p class="kicker">O que muda depois</p>
+        <h2>Você para de descobrir na hora.</h2>
+      </div>
+      <p>Saber trabalhar com previsibilidade é melhor do que aprender a lidar com as consequências
+      do que você não previu. Vale para projeto, para crise e para reunião.</p>
+    </div>
 
-    <div class="grid">
+    <div class="grade">
       <div class="item">
+        <span class="num">01</span>
         <h3>Você reconhece os comportamentos antes de entrar na sala</h3>
-        <p>Cinco perfis que aparecem em qualquer reunião: o repressor, o esquivador, o prolixo, o
-        despreparado e o desesperado. O que cada um faz, o que fazer com cada um, e como mudar se
-        você for essa pessoa.</p>
+        <p>Cinco perfis que aparecem em qualquer reunião: <em>o repressor</em>, <em>o esquivador</em>,
+        <em>o prolixo</em>, <em>o despreparado</em> e <em>o desesperado</em>. O que cada um faz, o
+        que fazer com cada um, e como mudar se você for essa pessoa.</p>
       </div>
       <div class="item">
+        <span class="num">02</span>
         <h3>A reunião de decisão decide</h3>
         <p>Quem precisa estar na sala, quem não precisa, e o roteiro de abertura do mediador,
         escrito para você ler.</p>
       </div>
       <div class="item">
+        <span class="num">03</span>
         <h3>A conversa sobre comprometimento não vira tribunal</h3>
         <p>Como confrontar entrega e engajamento, com o exemplo do que dizer e do que não dizer. A
         diferença entre as duas frases decide o resto da conversa.</p>
       </div>
       <div class="item">
+        <span class="num">04</span>
         <h3>A mudança não esbarra na resistência de sempre</h3>
         <p>O que apresentar, em que ordem, e por que o engajamento se decide no modo como você
         conduz as objeções, não no conteúdo do slide.</p>
       </div>
       <div class="item">
+        <span class="num">05</span>
         <h3>Você negocia com o limite definido antes</h3>
         <p>A técnica Zopa, a zona de possível acordo, aplicada a aumento salarial, corte de equipe,
         orçamento de projeto e aprovação de custo com cliente.</p>
       </div>
       <div class="item">
+        <span class="num">06</span>
         <h3>O preparo cabe no seu tempo</h3>
         <p>São 36 páginas com ISBN e ficha catalográfica, e não um resumo. Mas você não precisa ler
         tudo hoje. Vá ao comportamento que mais aparece nas suas reuniões e comece por ele.</p>
@@ -231,86 +294,99 @@
   </div>
 </section>
 
-<!-- ============================== A TESE ============================== -->
-<div class="tese">
-  <div class="wrap cols">
-    <div>
-      <blockquote>As reuniões são injustamente crucificadas. São vítimas de um sistema que usa a
-      ferramenta certa para as finalidades erradas.</blockquote>
-      <p class="fonte">Primeira página do livro</p>
+<!-- ============================== CITAÇÃO ============================== -->
+<section class="citacao">
+  <div class="wrap">
+    <span class="risco-v" aria-hidden="true"></span>
+    <blockquote>As reuniões são injustamente crucificadas. São vítimas de um sistema que usa a
+    ferramenta certa para as finalidades erradas.</blockquote>
+  </div>
+</section>
+
+<!-- ============================== PÁGINA DO LIVRO ============================== -->
+<section class="pagina">
+  <div class="wrap">
+    <div style="min-width:0">
+      <p class="kicker">Primeira página do livro</p>
+      <img src="/primeira-pagina.jpg" width="900" height="802" loading="lazy"
+           alt="Abertura do capítulo um do livro eletrônico, com o título Introdução">
     </div>
-    <div>
-      <p class="par">Esses comportamentos já existem e não são causados pela reunião. Eles chegam
+    <div class="texto">
+      <p class="grande">Esses comportamentos já existem e não são causados pela reunião. Eles chegam
       prontos, formados pela gestão que você deixa de fazer antes e depois de cada reunião.</p>
-      <p class="par" style="margin-top:15px">Por isso zelar pelo tempo de cada pessoa convidada é
-      responsabilidade de quem lidera o encontro. Inclusive quando quem convocou foi você.</p>
+      <p>Por isso zelar pelo tempo de cada pessoa convidada é responsabilidade de quem lidera o
+      encontro. Inclusive quando quem convocou foi você.</p>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ============================== QUEM ESCREVE ============================== -->
-<section>
-  <div class="wrap narrow autora">
-    <p class="kicker">Quem escreve</p>
-    <h2>Fernanda Scavacini</h2>
-    <p style="margin-top:14px;max-width:60ch">Fui gestora por 17 anos, em diferentes contextos de
-    caos, com equipes diversas e até mais profissionais do que um único gestor poderia dar conta.
-    Escrevo sobre gestão há mais de uma década, e aplico o que escrevo. Autora de
-    <em>Abraça o Caos</em> e de <em>O Outro Lado da Gestão</em>. LinkedIn Top Voice.</p>
+<section class="autora">
+  <div class="wrap">
+    <div style="min-width:0">
+      <p class="kicker">Quem escreve</p>
+      <h2>Fernanda Scavacini</h2>
+      <p class="bio">Fui gestora por 17 anos, em diferentes contextos de caos, com equipes diversas
+      e até mais profissionais do que um único gestor poderia dar conta. Escrevo sobre gestão há
+      mais de uma década, e aplico o que escrevo. Autora de <em>Abraça o Caos</em> e de
+      <em>O Outro Lado da Gestão</em>. LinkedIn Top Voice.</p>
+    </div>
     <p class="bandeira">A gestão é o seu legado, não o da empresa.</p>
   </div>
 </section>
 
 <!-- ============================== FECHO ============================== -->
-<div class="close">
+<section class="fecho">
   <div class="wrap">
-   <div class="cols">
-    <div>
-      <h2><span>“</span>Não tenho tempo de ler 36 páginas.<span>”</span></h2>
-      <p class="sub">Entendo. Só que você também não tem tempo de repetir, semana que vem, a
-      reunião que não decidiu nada nesta.</p>
+    <div style="min-width:0">
+      <h2>“Não tenho tempo de ler 36 páginas.”</h2>
+      <p class="sub">Entendo. Só que você também não tem tempo de repetir, semana que vem, a reunião
+      que não decidiu nada nesta.</p>
     </div>
 
-    <div class="form-card" id="card-fim">
-    <form class="ml-form" id="form-fim" novalidate>
-      <div class="field">
-        <label for="nome2">Nome</label>
-        <input type="text" id="nome2" name="fields[name]" autocomplete="given-name" required>
+    <div class="card escuro" id="card-fim">
+      <form class="ml-form" id="form-fim" novalidate>
+        <label class="campo" for="nome2">
+          <span>Nome</span>
+          <input type="text" id="nome2" name="fields[name]" autocomplete="given-name" required>
+        </label>
+        <label class="campo" for="email2">
+          <span>E-mail profissional</span>
+          <input type="email" id="email2" name="fields[email]" autocomplete="email" required>
+        </label>
+        <label class="campo" for="cargo2">
+          <span>Cargo (opcional)</span>
+          <input type="text" id="cargo2" name="fields[cargo]" autocomplete="organization-title">
+        </label>
+        <label class="consent" for="ok2">
+          <input type="checkbox" id="ok2" name="optin" required>
+          <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso
+          sair quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
+        </label>
+        <p class="erro" hidden></p>
+        <button type="submit">Quero o e-book <span class="risco" aria-hidden="true"></span></button>
+        <p class="nota">Livro eletrônico de 36 páginas, com ISBN. Gratuito.</p>
+      </form>
+      <div class="ok" hidden>
+        <p class="kicker selo">Pronto</p>
+        <p class="titulo">Falta um clique.</p>
+        <p class="corpo">Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
+        <p class="corpo">Se não encontrar, olhe no spam e nas promoções.</p>
       </div>
-      <div class="field">
-        <label for="email2">E-mail profissional</label>
-        <input type="email" id="email2" name="fields[email]" autocomplete="email" required>
-      </div>
-      <div class="field">
-        <label for="cargo2">Cargo <span style="text-transform:none;letter-spacing:0;font-weight:400">(opcional)</span></label>
-        <input type="text" id="cargo2" name="fields[cargo]" autocomplete="organization-title">
-      </div>
-      <label class="consent" for="ok2">
-        <input type="checkbox" id="ok2" name="optin" required>
-        <span>Autorizo o envio deste material e de conteúdos sobre gestão no meu e-mail. Posso sair
-        quando quiser. <a href="/politica-de-privacidade">Política de privacidade</a></span>
-      </label>
-      <p class="erro" hidden></p>
-      <button type="submit">Quero o e-book</button>
-    </form>
-    <div class="ok" hidden>
-      <p class="ok-titulo">Falta um clique.</p>
-      <p>Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
-      <p class="ok-nota">Se não encontrar, olhe no spam e nas promoções.</p>
     </div>
-    </div>
-   </div>
   </div>
-</div>
+</section>
 
 <footer>
-  <div class="wrap row">
+  <div class="wrap">
     <span class="seal">Scavacini</span>
-    <div>
-      <a href="https://fernandascavacini.com.br">fernandascavacini.com.br</a> &nbsp;·&nbsp;
-      <a href="https://www.linkedin.com/in/fernandascavacini/">LinkedIn</a> &nbsp;·&nbsp;
+    <p>
+      <a href="https://fernandascavacini.com.br">fernandascavacini.com.br</a>
+      <span>·</span>
+      <a href="https://www.linkedin.com/in/fernandascavacini/">LinkedIn</a>
+      <span>·</span>
       <a href="/politica-de-privacidade">Política de privacidade</a>
-    </div>
+    </p>
   </div>
 </footer>
 
@@ -329,7 +405,7 @@
     var email = form.querySelector('input[name="fields[email]"]');
     var cargo = form.querySelector('input[name="fields[cargo]"]');
     var optin = form.querySelector('input[name="optin"]');
-    var rotulo = botao.textContent;
+    var rotulo = botao.innerHTML;
 
     function falha(msg, campo){
       erro.textContent = msg; erro.hidden = false;
@@ -341,9 +417,9 @@
       e.preventDefault();
       erro.hidden = true;
 
-      if (!nome.value.trim())      return falha('Escreva o seu nome.', nome);
+      if (!nome.value.trim())          return falha('Escreva o seu nome.', nome);
       if (!valido(email.value.trim())) return falha('Confira o e-mail, parece que falta alguma coisa.', email);
-      if (!optin.checked)          return falha('Marque a autorização para eu poder te enviar o material.', null);
+      if (!optin.checked)              return falha('Marque a autorização para eu poder te enviar o material.', null);
 
       botao.disabled = true;
       botao.textContent = 'Aguarde um instante';
@@ -369,7 +445,7 @@
         body: dados.toString()
       }).then(pronto).catch(function(){
         botao.disabled = false;
-        botao.textContent = rotulo;
+        botao.innerHTML = rotulo;
         falha('Não consegui enviar agora. Tente de novo em um instante.', null);
       });
     });

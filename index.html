@@ -21,6 +21,7 @@
     --text:'Fustat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
+  [hidden]{display:none !important}
   html{scroll-behavior:smooth}
   body{font-family:var(--text);background:var(--navy);color:#fff;
        -webkit-font-smoothing:antialiased;line-height:1.65;font-size:17px;text-wrap:pretty}
@@ -93,17 +94,30 @@
   .erro{font-size:.82rem;margin:-6px 0 0}
   .claro .erro{color:#A8483C}
   .escuro .erro{color:#D98B7E}
-  .ok{padding:38px 30px}
-  .ok .selo{margin-bottom:12px}
-  .claro .ok .selo{color:#6E7788}
-  .escuro .ok .selo{color:var(--taupe)}
-  .ok .titulo{font-family:var(--title);font-size:1.5rem;line-height:1.3;margin-bottom:12px}
+  .ok{padding:40px 30px}
+  .ok .icone{display:flex;align-items:center;justify-content:center;
+    width:52px;height:52px;border-radius:50%;margin-bottom:22px}
+  .ok .icone svg{width:24px;height:24px;display:block}
+  .claro .ok .icone{background:rgba(28,35,51,.07);color:var(--navy)}
+  .escuro .ok .icone{background:rgba(196,183,174,.16);color:var(--taupe)}
+  .ok .titulo{font-family:var(--title);font-size:1.72rem;line-height:1.25;margin-bottom:12px}
   .claro .ok .titulo{color:var(--navy)}
   .escuro .ok .titulo{color:#fff}
-  .ok p.corpo{font-size:.95rem}
-  .claro .ok p.corpo{color:#5A6376}
+  .ok p.corpo{font-size:1rem;max-width:38ch}
+  .claro .ok p.corpo{color:#41495B}
   .escuro .ok p.corpo{color:var(--body-dark)}
-  .ok p.corpo+p.corpo{margin-top:10px;font-size:.85rem;opacity:.8}
+  .ok .socorro{margin-top:26px;padding-top:22px;font-size:.86rem;line-height:1.55}
+  .claro .ok .socorro{border-top:1px solid rgba(28,35,51,.16);color:#5A6376}
+  .escuro .ok .socorro{border-top:1px solid rgba(196,183,174,.24);color:var(--foot)}
+  .ok .socorro p+p{margin-top:9px}
+  .ok .socorro .rotulo{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:700;margin-bottom:10px}
+  .claro .ok .socorro .rotulo{color:var(--navy)}
+  .escuro .ok .socorro .rotulo{color:var(--taupe)}
+  .claro .ok .socorro strong{color:var(--navy);font-weight:600}
+  .escuro .ok .socorro strong{color:#fff;font-weight:600}
+  .claro .ok .socorro a{color:var(--body-light);text-decoration:underline;text-underline-offset:2px}
+  .escuro .ok .socorro a{color:var(--taupe);text-decoration:underline;text-underline-offset:2px}
 
   /* ---------- benefícios ---------- */
   .beneficios{background:var(--offwhite);color:var(--body-light)}
@@ -231,10 +245,24 @@
         em um clique e ele chega em seguida.</p>
       </form>
       <div class="ok" hidden>
-        <p class="kicker selo">Pronto</p>
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="1.5"></rect>
+            <path d="M3 6.5l9 6.5 9-6.5"></path>
+          </svg>
+        </span>
         <p class="titulo">Falta um clique.</p>
-        <p class="corpo">Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
-        <p class="corpo">Se não encontrar, olhe no spam e nas promoções.</p>
+        <p class="corpo">Enviei um e-mail para confirmar que o endereço é seu. Abra, clique no
+        botão, e o livro chega em seguida.</p>
+        <div class="socorro">
+          <p class="rotulo">Não chegou?</p>
+          <p>Procure por <strong>Falta um clique para o e-book chegar</strong>, enviado por
+          <strong>fe@fernandascavacini.com.br</strong>. Olhe no spam e nas promoções.</p>
+          <p>Se mesmo assim não aparecer,
+          <a href="mailto:fe@fernandascavacini.com.br?subject=N%C3%A3o%20recebi%20o%20e-book%20Como%20liderar%20reuni%C3%B5es%20dif%C3%ADceis">me
+          escreva</a> que eu envio na mão.</p>
+        </div>
       </div>
     </div>
 
@@ -373,10 +401,24 @@
         <p class="nota">Livro eletrônico de 36 páginas, com ISBN. Gratuito.</p>
       </form>
       <div class="ok" hidden>
-        <p class="kicker selo">Pronto</p>
+        <span class="icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"
+               stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="1.5"></rect>
+            <path d="M3 6.5l9 6.5 9-6.5"></path>
+          </svg>
+        </span>
         <p class="titulo">Falta um clique.</p>
-        <p class="corpo">Abra o seu e-mail e confirme o cadastro. O livro chega em seguida.</p>
-        <p class="corpo">Se não encontrar, olhe no spam e nas promoções.</p>
+        <p class="corpo">Enviei um e-mail para confirmar que o endereço é seu. Abra, clique no
+        botão, e o livro chega em seguida.</p>
+        <div class="socorro">
+          <p class="rotulo">Não chegou?</p>
+          <p>Procure por <strong>Falta um clique para o e-book chegar</strong>, enviado por
+          <strong>fe@fernandascavacini.com.br</strong>. Olhe no spam e nas promoções.</p>
+          <p>Se mesmo assim não aparecer,
+          <a href="mailto:fe@fernandascavacini.com.br?subject=N%C3%A3o%20recebi%20o%20e-book%20Como%20liderar%20reuni%C3%B5es%20dif%C3%ADceis">me
+          escreva</a> que eu envio na mão.</p>
+        </div>
       </div>
     </div>
   </div>

@@ -475,6 +475,8 @@
       dados.append('fields[name]',  nome.value.trim());
       dados.append('fields[email]', email.value.trim());
       dados.append('fields[cargo]', cargo.value.trim());
+      var origem = (new URLSearchParams(location.search).get('o') || 'direto').slice(0, 40);
+      dados.append('fields[origem]', origem);
       dados.append('ml-submit', '1');
       dados.append('anticsrf', 'true');
 
